@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+.specify
+specs
+CLAUDE.md
+*.md
+npm-debug.log*
+Dockerfile
+.dockerignore
+.env*
+.playwright-mcp
+.claude
+tsconfig.tsbuildinfo
