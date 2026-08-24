@@ -15,6 +15,7 @@ export interface ChatMessage {
   content: string;
   createdAt: string;
   contacts?: ContactResult[];
+  quickReplies?: string[];
 }
 
 export type ChatResponse = ChatMessage;

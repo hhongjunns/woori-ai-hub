@@ -1,16 +1,16 @@
 import type { ChatMessage, ContactResult } from "@/lib/types/contact-finder";
 
 export const FREQUENTLY_FOUND_ORGS = [
-  "경제활황팀",
-  "보안팀",
+  "포탈팀",
+  "그룹지원팀",
   "인프라팀",
   "인사팀",
 ];
 
 export const RECENT_SEARCHES = [
-  "결제 시스템 장애 담당자",
-  "신규 임시서 계정 발급 담당",
-  "모니터링 대시보드 문의",
+  "가상행번 담당",
+  "신청업무 담당",
+  "동의 및 점검 하는 법",
 ];
 
 const PG_CONTACTS: ContactResult[] = [
@@ -43,15 +43,29 @@ const DEFAULT_CONTACTS: ContactResult[] = [
   },
 ];
 
+export const PAYMENT_CLARIFY_QUICK_REPLIES = [
+  "API 오류",
+  "정산 · 정합성",
+  "PG 연동",
+  "잘 모르겠음",
+];
+
 export const CONTACT_FINDER_RESPONSES_MOCK: {
   keywords: string[];
   content: string;
-  contacts: ContactResult[];
+  contacts?: ContactResult[];
+  quickReplies?: string[];
 }[] = [
   {
-    keywords: ["pg", "결제", "정산"],
+    keywords: ["pg", "정산", "정합성"],
     content: "PG 연동 관련 담당자 2명을 찾았어요.",
     contacts: PG_CONTACTS,
+  },
+  {
+    keywords: ["결제"],
+    content:
+      "\"결제\"는 범위가 넓어서, 어떤 이슈에 가까운지 알려주시면 더 정확히 찾아드릴게요.",
+    quickReplies: PAYMENT_CLARIFY_QUICK_REPLIES,
   },
 ];
 
@@ -66,6 +80,7 @@ export function findMockChatResponse(query: string): ChatMessage {
     role: "assistant",
     content: matched?.content ?? "관련 담당자를 찾지 못했어요. 다른 키워드로 다시 질문해 주세요.",
     createdAt: new Date().toISOString(),
-    contacts: matched?.contacts ?? DEFAULT_CONTACTS,
+    contacts: matched?.contacts ?? (matched ? undefined : DEFAULT_CONTACTS),
+    quickReplies: matched?.quickReplies,
   };
 }
