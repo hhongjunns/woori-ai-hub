@@ -2,6 +2,7 @@ export interface WorkSystem {
   id: string;
   name: string;
   description: string;
+  updatedAt: string;
 }
 
 export type WorkInfoItemType =

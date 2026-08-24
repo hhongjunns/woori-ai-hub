@@ -23,6 +23,7 @@ export default async function WorkSystemDetailPage(
   return (
     <WorkSystemDetailClient
       system={system}
+      systems={systems}
       items={items}
       nodes={graph.nodes}
       edges={graph.edges}
