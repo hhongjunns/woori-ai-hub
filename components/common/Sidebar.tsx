@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   },
   {
     href: "/coding-automation",
-    label: "코딩 자동화",
+    label: "코딩 자동화(김범영)",
     icon: "/icons/nav-coding-automation.svg",
     activeIcon: "/icons/nav-coding-automation-active.svg",
     hidden: false,
